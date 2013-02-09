@@ -2,19 +2,34 @@
 
 class CacheMemory extends Cache {
     protected $connection = null;
+    protected $extend_stats = null;
     protected $logs = array();
 
     /**
      * Connect to Memcache server.
      *
-     * @param  $options
+     * @param array $options
      * @return void
      */
     public function configure( $options ) {
         $this->connection = memcache_connect($options['host'], $options['port']);
+
+        $this->extend_stats = current( array_values( $this->connection->getExtendedStats() ));
     }
 
     /**
+     * 
+     *
+     * @return array
+     */
+    public function info() {
+
+        return $this->extend_stats;
+    }
+
+    /**
+     *
+     *
      * @param  $name
      * @param  $value
      * @param bool $compressed

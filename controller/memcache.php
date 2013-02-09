@@ -15,6 +15,14 @@ class Controller_Memcache {
         $this->cache->configure( $options );
     }
 
+    public function stats() {
+        $template = new View( 'template' );
+        $template->content = new View( 'stats' );
+        $template->content->info = $this->cache->info();
+
+        echo $template;
+    }
+
     public function index() {
 
         $template = new View( 'template' );

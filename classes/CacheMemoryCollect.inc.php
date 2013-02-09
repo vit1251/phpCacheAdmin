@@ -20,7 +20,7 @@ class CacheMemoryCollect extends CacheMemory {
                         'name' => $name,
                         'slab' => array( $slabid ),
                         'size' => $info[0],
-                        'timeout' => $info[1] - time(),
+                        'timeout' => $info[1] - $this->extend_stats['time'],
                         'expire' => $info[1],
                         'raw' => $info,
                     );
@@ -29,8 +29,11 @@ class CacheMemoryCollect extends CacheMemory {
                 }
 
             }
-
         }
+
+        //reset, malloc, maps, cachedump, slabs, items, sizes
+//      $r = memcache_get_stats($this->connection, 'sizes', $slabid);
+//      var_dump( $r );
 
         return $items;
     }

@@ -46,7 +46,17 @@ tr.blue {
 	z-index:5;
 }
 
+#top span a {
+	text-decoration: none;
+	color: black;
+}
+
+#top span:hover {
+	background-color: #C0C0C0;
+}
+
 .button {
+	background: -webkit-gradient(linear, left bottom, left top, from(#00f), color-stop(0, #D5D4CC), color-stop(1, #F0F0CC));
 	background: -moz-linear-gradient(center bottom, #D5D4CC 0%, #F0F0CC 100%) repeat scroll 0 0 transparent;
 	border: 1px solid #D0D0D0;
 	display: inline-block;
@@ -58,7 +68,9 @@ tr.blue {
 	color: black;
 	text-decoration: none;
 }
+
 .button:hover {
-	background: -moz-linear-gradient(center bottom, #D5D433 0%, #F0F022 100%) repeat scroll 0 0 transparent;
+	background: -webkit-gradient(linear, left bottom, left top, from(#00f), color-stop(0, #D5D4CC), color-stop(1, #FF9999));
+	background: -moz-linear-gradient(center bottom, #D5D4CC 0%, #FF9999 100%) repeat scroll 0 0 transparent;
 
 }

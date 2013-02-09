@@ -1,9 +1,12 @@
 <?php
 
 return array(
-    'catalog' => 'All keys',
-    'gc' => 'Garbage collector',
-    'language' => 'Language',
+    'mainmenu' => array(
+        'general' => 'Main',
+        'stats' => 'Inforamtion',
+        'language' => 'Language',
+        'help' => 'Help',
+    ),
 
     'table' => array(
         'name' => 'Name',

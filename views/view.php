@@ -1,5 +1,3 @@
 <h1><?php echo $title ?></h1>
 
-<pre>
-<?php echo var_export( $data ) ?>
-</pre>
+<pre><?php echo htmlspecialchars( var_export( $data, true ) ); ?></pre>

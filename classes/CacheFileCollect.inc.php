@@ -21,7 +21,7 @@ class CacheFileCollect extends CacheFile {
                     $result[$file]['compressed'] = $cacheObject->compressed;
                     $result[$file]['expire'] = $cacheObject->expire;
                     $result[$file]['timeout'] = $cacheObject->expire - time();
-                    $result[$file]['size'] = strlen( serialize($cacheObject->data) );
+                    $result[$file]['size'] = strlen( $cacheObject->data );
                 }
             }
             closedir($dh);
