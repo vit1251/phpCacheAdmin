@@ -1,21 +1,44 @@
 <?php
 
-class Controller_Memcache {
+class Controller_Memcache extends Controller {
+
+    /**
+     * Указывает на обьект с кешем
+     *
+     * @var CacheMemory
+     */
     protected $cache;
 
-    public function __construct() {
+    /**
+     * Перед каждым обращением к контроллеру устанавливаем подключение к серверу
+     * 
+     * @return void
+     */
+    public function before() {
 
         $this->cache = new CacheMemoryCollect();
 
+        $servers = Config::get('memcache');
+        $configuration = Session::instance()->configuration;
+        $server_id = $configuration['server_id'];
+
         $options = array(
-            'host' => Config::get('memcache.host'),
-            'port' => Config::get('memcache.port'),
+            'host'    => $servers[$server_id]['host'],
+            'port'    => $servers[$server_id]['port'],
+            'timeout' => $servers[$server_id]['timeout'],
         );
 
         $this->cache->configure( $options );
+
+        return parent::before();
     }
 
-    public function stats() {
+    /**
+     * Информация о сервере
+     *
+     * @return void
+     */
+    public function status() {
         $template = new View( 'template' );
         $template->content = new View( 'stats' );
         $template->content->info = $this->cache->info();
@@ -23,6 +46,11 @@ class Controller_Memcache {
         echo $template;
     }
 
+    /**
+     * Основная информация
+     *
+     * @return void
+     */
     public function index() {
 
         $template = new View( 'template' );

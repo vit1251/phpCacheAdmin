@@ -3,9 +3,13 @@
 return array(
     'mainmenu' => array(
         'general' => 'Main',
-        'stats' => 'Inforamtion',
-        'language' => 'Language',
+        'status' => 'Inforamtion',
+        'settings' => 'Settings',
         'help' => 'Help',
+    ),
+
+    'settings' => array(
+        'language' => 'Language',
     ),
 
     'table' => array(

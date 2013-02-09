@@ -3,19 +3,53 @@
 return array(
     'mainmenu' => array(
         'general' => 'Главная',
-        'stats' => 'Информация',
-        'language' => 'Выбор языка',
+        'server' => 'Подключение',
+        'status' => 'Информация',
+        'settings' => 'Настройки',
         'help' => 'Справка',
+
+        'servermenu' => array(
+            'nodes' => 'Список записей',
+            'status' => 'Статистика',
+        ),
+
     ),
 
-    'table' => array(
-        'name' => 'Название',
-        'slab' => 'Куст',
-        'size' => 'Размер',
-        'date_expire' => 'Дата смерти',
-        'timeout' => 'Осталось, сек.',
-        'actions' => 'Действия',
+    'server' => array(
+
+        'nodes' => array(
+            'name' => 'Название',
+            'slab' => 'Куст',
+            'size' => 'Размер',
+            'date_expire' => 'Дата смерти',
+            'timeout' => 'Осталось, сек.',
+            'actions' => 'Действия',
+        ),
+
+        'status' => array(
+            'name' => 'Название переменной',
+            'value' => 'Значение'
+        ),
     ),
+
+    'settings' => array(
+        'languages' => 'Выбор языка',
+        'servers' => 'Выбор сервера',
+
+        'language' => array(
+            'ru' => 'Русский',
+            'en' => 'English',
+        ),
+
+        'server' => array(
+            'name' => 'Название',
+            'host' => 'Адрес узла',
+            'port' => 'Порт',
+            'timeout' => 'Время доступа',
+        ),
+
+    ),
+
 
     'action' => array(
         'view' => 'Просмотреть',

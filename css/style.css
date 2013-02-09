@@ -22,6 +22,10 @@ td, th {
 	padding: 8px 10px;
 }
 
+th {
+	font-weight: bold;
+}
+
 tr.red {
 	background-color: #FFCCCC;
 }

@@ -6,13 +6,29 @@ class CacheMemory extends Cache {
     protected $logs = array();
 
     /**
-     * Connect to Memcache server.
+     * Стандартный конструктор проверяющий доступность модуля.
+     *
+     * @return void
+     */
+    public function __construct() {
+        if ( !function_exists('memcache_connect') ) {
+            throw new Exception('Модуль MEMCACHED не обнаружен.');
+        }
+
+    }
+
+    /**
+     * Конфигурируем подключение к серверу Memcached и создаем подключение.
      *
      * @param array $options
      * @return void
      */
     public function configure( $options ) {
-        $this->connection = memcache_connect($options['host'], $options['port']);
+        $this->connection = @memcache_connect($options['host'], $options['port']);
+
+        if ( !$this->connection ) {
+            throw new Exception('Не удалось подключиться к указанному MEMCACHED серверу');
+        }
 
         $this->extend_stats = current( array_values( $this->connection->getExtendedStats() ));
     }
