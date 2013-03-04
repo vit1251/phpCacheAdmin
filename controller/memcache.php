@@ -18,14 +18,10 @@ class Controller_Memcache extends Controller {
 
         $this->cache = new CacheMemoryCollect();
 
-        $servers = Config::get('memcache');
-        $configuration = Session::instance()->configuration;
-        $server_id = $configuration['server_id'];
-
         $options = array(
-            'host'    => $servers[$server_id]['host'],
-            'port'    => $servers[$server_id]['port'],
-            'timeout' => $servers[$server_id]['timeout'],
+            'host'    => $_SESSION['host'],
+            'port'    => $_SESSION['port'],
+            'timeout' => $_SESSION['timeout'],
         );
 
         $this->cache->configure( $options );
@@ -64,10 +60,12 @@ class Controller_Memcache extends Controller {
         $template = new View( 'template' );
         $template->content = $view = new View('view');
 
-        $name = $_REQUEST['name'];
+        if (array_key_exists('key', $_REQUEST)) {
+            $key = $_REQUEST['key'];
 
-        $view->title = $name;
-        $view->data = $this->cache->get($name);
+            $view->title = $key;
+            $view->data = $this->cache->get($key);
+        }
 
         echo $template;
     }

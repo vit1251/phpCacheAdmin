@@ -1,6 +1,14 @@
 <h1>Welcome to phpCacheAdmin 0.6</h1>
 
-<h2>Revision 6</h2>
+<h2>Version 0.7</h2>
+
+<pre>
+[~] update jQuery to 1.9
+[~] UI was migrate to Twitter Bootstrap
+[~] remove path based routing (add easy install)
+</pre>
+
+<h2>Version 0.6</h2>
 
 <pre>
 [+] saveing configuration in session
@@ -12,7 +20,7 @@
 [!] main menu is cascade but require review
 </pre>
 
-<h2>Revision 5</h2>
+<h2>Version 0.5</h2>
 
 <pre>
 [~] fix problem diff timestamp remote host and local
@@ -20,7 +28,7 @@
 [-] removed manual garbage collector
 </pre>
 
-<h2>Revision 4</h2>
+<h2>Version 0.4</h2>
 
 <pre>
 [+] Config class for reading configuration file

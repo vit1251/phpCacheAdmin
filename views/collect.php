@@ -1,4 +1,4 @@
-<table border="0" width="100%">
+<table class="table table-hover table-condensed">
 <thead>
 	<th align="left"><?php echo I18n::get('server.nodes.name') ?></th>
 	<th align="center"><?php echo I18n::get('server.nodes.slab') ?></th>
@@ -9,35 +9,33 @@
 </thead>
 <tbody>
 
-<?php foreach((array)$collect as $key => $value): ?>
-<tr class="<?php echo $value['timeout'] > 0 ? 'green' : 'red' ?>">
+<?php foreach((array)$collect as $key => $value) { ?>
+<tr class="<?php echo $value['timeout'] > 0 ? 'success' : 'error' ?>">
 
-	<td><a href="/server/view/?name=<?php echo $value['name'] ?>"><?php echo $value['name'] ?></a></td>
+	<td><a href="?controller=memcache&action=view&key=<?php echo $value['name'] ?>"><?php echo $value['name'] ?></a></td>
 	<td align="center"><?php echo join(', ', $value['slab']) ?></td>
 	<td align="right">~ <?php echo $value['size'] ?></td>
 	<td align="right"><?php echo date('d.m.Y H:i:s', $value['expire']) ?></td>
 	<td align="right"><?php echo $value['timeout'] ?></td>
 	<td align="right">
-		<span class="button delete" data-id="<?php echo $value['name'] ?>"><?php echo I18n::get('action.delete') ?></span>
+		<span class="btn btn-warning btn-mini" data-key="<?php echo $value['name'] ?>"><?php echo I18n::get('action.delete') ?></span>
 	</td>
 </tr>
-<?php endforeach ?>
+<?php } ?>
 
 </tbody>
 </table>
 
 <script type="text/javascript">
-
 $(document).ready( function() {
-
     $('span.delete').click( function() {
-        var id = $(this).attr('data-id');
+        var key = $(this).attr('data-key');
         var $row = $(this).parents('tr');
 
         $.ajax({
-            url: '/server/delete/',
+            url: '?controller=memcache&action=delete',
             data: { 
-                name: id
+                'key': key
             },
             dataType: 'json',
             success: function( data ) {

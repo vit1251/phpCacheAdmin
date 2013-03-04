@@ -19,7 +19,7 @@ return array(
 
         'nodes' => array(
             'name' => 'Название',
-            'slab' => 'Куст',
+            'slab' => 'Блок',
             'size' => 'Размер',
             'date_expire' => 'Дата смерти',
             'timeout' => 'Осталось, сек.',

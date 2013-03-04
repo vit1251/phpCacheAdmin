@@ -96,34 +96,9 @@ class Request {
      * @return void
      */
     private function __construct( $uri = null ) {
-        if ( empty( $uri ) ) {
-            $uriArr = explode('?', $_SERVER['REQUEST_URI'], 2);
-            $uri = $uriArr[0];
-            $query  = !empty($uriArr[1]) ? $uriArr[1] : '';
-        }
 
-        $this->uri = $uri;
-
-        $urlconf = Config::get('routes');
-
-        foreach ($urlconf as $pattern => $callback) {
-            if (preg_match($pattern, $this->uri, $matches) != false) {
-                $this->controller = $callback[0];
-                if (isset($matches['action'])) { // если задан экшн
-                    $this->action = $matches['action'];
-                    $this->args = !empty($matches[2]) ? explode('/', $matches[2]) : array();
-                } else {
-                    if (!isset($callback[1])) {
-                        $this->status = 404;
-                    }
-                    $this->action = $callback[1]; // берем дефолтный экшн
-                    array_shift($matches);
-                    $this->args = $matches;
-                }
-
-                break;
-            }
-        }
+        $this->controller = array_key_exists('controller', $_REQUEST) ? $_REQUEST['controller'] : 'welcome';
+        $this->action = array_key_exists('action', $_REQUEST) ? $_REQUEST['action'] : 'index';
 
     }
     
