@@ -18,7 +18,7 @@
 	<td align="right"><?php echo date('d.m.Y H:i:s', $value['expire']) ?></td>
 	<td align="right"><?php echo $value['timeout'] ?></td>
 	<td align="right">
-		<span class="btn btn-warning btn-mini" data-key="<?php echo $value['name'] ?>"><?php echo I18n::get('action.delete') ?></span>
+		<span class="btn btn-warning btn-mini delete" data-key="<?php echo $value['name'] ?>"><?php echo I18n::get('action.delete') ?></span>
 	</td>
 </tr>
 <?php } ?>

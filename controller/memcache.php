@@ -89,9 +89,12 @@ class Controller_Memcache extends Controller {
     }
  
     public function delete() {
-        $name = $_REQUEST['name'];
+        $result = false;
 
-        $result = $this->cache->delete($name);
+        if (array_key_exists('key', $_REQUEST)) {
+            $key = $_REQUEST['key'];
+            $result = $this->cache->delete($key) ? true : false;
+        }
 
         echo json_encode( $result );
     }
