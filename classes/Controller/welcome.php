@@ -8,12 +8,8 @@ class Controller_Welcome extends Controller {
      * @return void
      */
     public function index() {
-        $configuration = Session::instance()->configuration;
-        if ( empty($configuration) ) {
-            // Редирект на контроллер с конфигурацией ...
-        }
 
-        // Иначе выводим какой-нить CHANGE LOG
+
         $template = new View('template');
         $template->content = new View('welcome');
         

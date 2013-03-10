@@ -46,20 +46,6 @@ class Request {
     );
 
     /**
-     * Возвращает синглетон обьекта Request
-     *
-     * @static
-     * @return Request
-     */
-    public static function instance() {
-        static $instance;
-        if (!is_object($instance)) {
-            $instance = new self;
-        }
-        return $instance;
-    }
-
-    /**
      * @var integer Код HTTP ответа: 200, 404, 500...
      */
     public $status = 200;
@@ -84,10 +70,10 @@ class Request {
      */
     public $action = 'index';
 
-	/**
-	 * @var array параметры для вывода
-	 */
-	protected $args = array();
+    /**
+     * @var array параметры для вывода
+     */
+    protected $args = array();
 
     /**
      * Конструктор
@@ -95,8 +81,7 @@ class Request {
      * @params string $uri
      * @return void
      */
-    private function __construct( $uri = null ) {
-
+    public function __construct() {
         $this->controller = array_key_exists('controller', $_REQUEST) ? $_REQUEST['controller'] : 'welcome';
         $this->action = array_key_exists('action', $_REQUEST) ? $_REQUEST['action'] : 'index';
 
@@ -111,47 +96,6 @@ class Request {
      */
     public function __toString() {
         return (string) $this->response;
-    }
-
-    /**
-     * Осуществляет иерархическую загрузку классов контроллера
-     *
-     * @return $this
-     */
-    public function load() {
-
-        /* Если название контроллера пустое, то выходим */
-        if ( empty($this->controller) ) {
-            return $this;
-        }
-
-        /* Создаем список необходимых для работы контроллеров */
-        $controllers = array();
-        $controller = '';
-        $parts = explode('_', $this->controller);
-        foreach( $parts as $part ) {
-            if ( !empty($controller) ) {
-                $controller = $controller . '/' . $part;
-            } else {
-                $controller = $part;
-            }
-
-            $controllers[] = $controller;
-        }
-
-        /* Загружаем каждый контроллер */
-        foreach ( $controllers as $controller ) {
-            $controller_path = 'controller' . '/' . $controller . '.php';
-
-            if (file_exists($controller_path)) {
-                include $controller_path;
-            }
-            else {
-                error_log('loading '.$controller_path.' fail.' );
-            }
-        }
-
-        return $this;
     }
 
     /**

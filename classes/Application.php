@@ -2,6 +2,9 @@
 
 class Application {
 
+    protected function __construct() {
+    }
+
     public static function createApplication() {
         return new Application();
     }
@@ -10,14 +13,19 @@ class Application {
         Config::load('memcache');
         Config::load('i18n');
         Config::load('routes');
+
         $lang = Config::get('i18n.lang');
+
         I18n::load( $lang );
         I18n::lang( $lang );
+
         session_start();
-        echo Request::instance()
-            ->load()
-            ->execute()
-            ->response;
+
+        $request = new Request();
+
+        $response = $request->execute()->response;
+
+        echo $response;
     }
 
 }

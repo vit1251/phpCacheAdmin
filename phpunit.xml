@@ -1,0 +1,22 @@
+<phpunit backupGlobals="true"
+         backupStaticAttributes="true"
+         bootstrap="bootstrap.php"
+         cacheTokens="false"
+         colors="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         strict="true"
+         verbose="true">
+
+    <testsuites>
+        <testsuite name="My Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
