@@ -9,6 +9,9 @@ class Controller_Help extends Controller_Template {
      */
     public function index() {
         $this->template->content = new View('help');
+
+        $response = new Response($this->template);
+        return $response;
     }
 
 }

@@ -25,11 +25,9 @@ class CacheMemory extends Cache {
      */
     public function configure( $options ) {
         $this->connection = @memcache_connect($options['host'], $options['port'], $options['timeout']);
-
         if ( !$this->connection ) {
-            throw new Exception('Не удалось подключиться к указанному MEMCACHED серверу');
+            throw new Exception('Can not connect to ' . $options['host'] . ':' . $options['port'] . ' les than ' . $options['timeout'] . ' sec.' );
         }
-
         $this->extend_stats = current( array_values( $this->connection->getExtendedStats() ));
     }
 

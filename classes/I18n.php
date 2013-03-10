@@ -1,7 +1,9 @@
 <?php
 
 class I18n {
+
     public static $lang = 'en';
+
     public static $messages = array();
 
     /**
@@ -10,22 +12,18 @@ class I18n {
      *
      *
      */
-    public static function get( $string, $lang = null ) {
-        $result = $string;
+    public static function get( $path, $lang = null ) {
+        $result = '&lt;' . $path . '&gt;';
 
         if ( empty($lang) ) {
             $lang = self::lang();
         }
 
-        $messages = self::$messages[$lang];
-
-        $parts = explode('.', $string);
-        foreach($parts as $part) {
-            $messages = $messages[$part];
-        }
-
-        if ( is_string( $messages ) ) {
-            $result = $messages;
+        if (array_key_exists($lang, self::$messages)) {
+            $messages = self::$messages[$lang];
+            if (array_key_exists($path, $messages)) {
+                $result = is_string($messages[$path]) ? $messages[$path] : '!not_a_string!';
+            }
         }
 
         return $result;
@@ -48,12 +46,15 @@ class I18n {
     /**
      * Returns the translation table for a given language.
      *
+     * @return null|array
      */
     public static function load( $lang ) {
-        $result = include 'i18n'.'/'.$lang.'.php';
-
-        self::$messages[$lang] = $result;
-
+        $result = null;
+        $resourceLangPath = dirname(__FILE__) . '/../i18n/' . $lang . '.php';
+        if (file_exists($resourceLangPath)) {
+            $result = include $resourceLangPath;
+            self::$messages[$lang] = $result;
+        }
         return $result;
     }
 

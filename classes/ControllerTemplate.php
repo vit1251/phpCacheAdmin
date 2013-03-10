@@ -10,10 +10,12 @@ class Controller_Template extends Controller {
     /**
      * Подготавливает шаблон
      *
-     * @return void
+     * @return bool
      */
-    public function before() {
+    public function before($request) {
+        $result = parent::before($request);
         $this->template = new View('template');
+        return $result;
     }
 
     /**
@@ -21,8 +23,9 @@ class Controller_Template extends Controller {
      *
      * @return void
      */
-    public function after() {
-        Request::instance()->response = $this->template;
+    public function after($request) {
+        $request->response = $this->template;
+        parent::after($request);
     }
 
 }

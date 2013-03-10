@@ -11,7 +11,6 @@ spl_autoload_register('import');
 
 
 // Hardcoded autoload
-class_exists('ErrorHandler');
 class_exists('View');
 class_exists('Controller');
 class_exists('ControllerTemplate');

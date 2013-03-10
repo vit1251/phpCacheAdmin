@@ -14,19 +14,18 @@ class Controller_Memcache extends Controller {
      * 
      * @return void
      */
-    public function before() {
+    public function before($request) {
+        $result = parent::before($request);
 
         $this->cache = new CacheMemoryCollect();
-
         $options = array(
             'host'    => $_SESSION['host'],
             'port'    => $_SESSION['port'],
             'timeout' => $_SESSION['timeout'],
         );
-
         $this->cache->configure( $options );
 
-        return parent::before();
+        return $result;
     }
 
     /**

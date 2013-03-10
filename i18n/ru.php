@@ -1,79 +1,50 @@
 <?php
 
 return array(
-    'mainmenu' => array(
-        'general' => 'Главная',
-        'server' => 'Подключение',
-        'status' => 'Информация',
-        'settings' => 'Настройки',
-        'help' => 'Справка',
+    'mainmenu.general' => 'Главная',
+    'mainmenu.server' => 'Подключение',
+    'mainmenu.status' => 'Информация',
+    'mainmenu.settings' => 'Настройки',
+    'mainmenu.help' => 'Справка',
 
-        'servermenu' => array(
-            'nodes' => 'Список записей',
-            'status' => 'Статистика',
-        ),
+    'mainmenu.servermenu.nodes' => 'Список записей',
+    'mainmenu.servermenu.status' => 'Статистика',
 
-    ),
+    'server.nodes.name' => 'Название',
+    'server.nodes.slab' => 'Блок',
+    'server.nodes.size' => 'Размер',
+    'server.nodes.date_expire' => 'Дата смерти',
+    'server.nodes.timeout' => 'Осталось, сек.',
+    'server.nodes.actions' => 'Действия',
 
-    'server' => array(
+    'server.status.name' => 'Название переменной',
+    'server.status.value' => 'Значение',
 
-        'nodes' => array(
-            'name' => 'Название',
-            'slab' => 'Блок',
-            'size' => 'Размер',
-            'date_expire' => 'Дата смерти',
-            'timeout' => 'Осталось, сек.',
-            'actions' => 'Действия',
-        ),
+    'settings.languages' => 'Выбор языка',
+    'settings.servers' => 'Выбор сервера',
 
-        'status' => array(
-            'name' => 'Название переменной',
-            'value' => 'Значение'
-        ),
-    ),
+    'settings.server.name' => 'Название',
+    'settings.server.host' => 'Адрес узла',
+    'settings.server.port' => 'Порт',
+    'settings.server.timeout' => 'Время доступа',
 
-    'settings' => array(
-        'languages' => 'Выбор языка',
-        'servers' => 'Выбор сервера',
+    'action.view' => 'Просмотреть',
+    'action.delete' => 'Удалить',
 
-        'language' => array(
-            'ru' => 'Русский',
-            'en' => 'English',
-        ),
-
-        'server' => array(
-            'name' => 'Название',
-            'host' => 'Адрес узла',
-            'port' => 'Порт',
-            'timeout' => 'Время доступа',
-        ),
-
-    ),
-
-
-    'action' => array(
-        'view' => 'Просмотреть',
-        'delete' => 'Удалить',
-    ),
-
-    'memcache' => array(
-        'stats' => array(
-            'pid' => 'Идентификатор процесса',
-            'uptime' => 'Время работы',
-            'time' => 'Серверное время',
-            'version' => 'Версия',
-            'pointer_size' => 'Размер указателя',
-            'curr_connections' => 'Сервер сейчас обрабатывает подключений',
-            'total_connections' => 'Сервер всего обработал подключений',
-            'cmd_get' => 'Запросов на загрузку данных',
-            'cmd_set' => 'Запросов на сохранение данных',
-            'cmd_flush' => 'Запросов на сброс хранилища',
-            'get_hits' => 'Успешных запросов на данные',
-            'get_misses' => 'Неудачных запросов на данные',
-            'limit_maxbytes' => 'Максимальный допустимый размер памяти для хранилища',
-            'threads' => 'Количество потоков',
-            'curr_items' => 'Текущий узел',
-            'total_items' => 'Всего узлов',
-        ),
-    ),
+    'memcache.stats.pid' => 'Идентификатор процесса',
+    'memcache.stats.uptime' => 'Время работы',
+    'memcache.stats.time' => 'Серверное время',
+    'memcache.stats.version' => 'Версия',
+    'memcache.stats.pointer_size' => 'Размер указателя',
+    'memcache.stats.curr_connections' => 'Сервер сейчас обрабатывает подключений',
+    'memcache.stats.total_connections' => 'Сервер всего обработал подключений',
+    'memcache.stats.cmd_get' => 'Запросов на загрузку данных',
+    'memcache.stats.cmd_set' => 'Запросов на сохранение данных',
+    'memcache.stats.cmd_flush' => 'Запросов на сброс хранилища',
+    'memcache.stats.get_hits' => 'Успешных запросов на данные',
+    'memcache.stats.get_misses' => 'Неудачных запросов на данные',
+    'memcache.stats.limit_maxbytes' => 'Максимальный допустимый размер памяти для хранилища',
+    'memcache.stats.threads' => 'Количество потоков',
+    'memcache.stats.curr_items' => 'Текущий узел',
+    'memcache.stats.total_items' => 'Всего узлов',
 );

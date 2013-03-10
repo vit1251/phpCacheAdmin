@@ -1,28 +1,20 @@
 <?php
 
 return array(
-    'mainmenu' => array(
-        'general' => 'Main',
-        'status' => 'Inforamtion',
-        'settings' => 'Settings',
-        'help' => 'Help',
-    ),
+    'mainmenu.general' => 'Main',
+    'mainmenu.status' => 'Inforamtion',
+    'mainmenu.settings' => 'Settings',
+    'mainmenu.help' => 'Help',
 
-    'settings' => array(
-        'language' => 'Language',
-    ),
+    'settings.language' => 'Language',
 
-    'table' => array(
-        'name' => 'Name',
-        'slab' => 'Slab',
-        'size' => 'Size',
-        'date_expire' => 'Death date',
-        'timeout' => 'Expire, sec.',
-        'actions' => 'Actions',
-    ),
+    'table.name' => 'Name',
+    'table.slab' => 'Slab',
+    'table.size' => 'Size',
+    'table.date_expire' => 'Death date',
+    'table.timeout' => 'Expire, sec.',
+    'table.actions' => 'Actions',
 
-    'action' => array(
-        'view' => 'View',
-        'delete' => 'Delete',
-    ),
+    'action.view' => 'View',
+    'action.delete' => 'Delete',
 );

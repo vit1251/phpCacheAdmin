@@ -8,11 +8,11 @@ class Controller_Welcome extends Controller {
      * @return void
      */
     public function index() {
-
-
+        
         $template = new View('template');
         $template->content = new View('welcome');
-        
-        echo $template;
+
+        $response = new Response($template);
+        return $response;
     }
 }

@@ -9,6 +9,21 @@ class Application {
         return new Application();
     }
 
+    /**
+     * Выполняет действие из контроллера
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function execute($request) {
+
+        $className = 'Controller' . '_' . ucfirst($request->controller);
+        $class = new $className;
+        $response = $class->serve($request);
+        
+        return $response;
+    }
+
     public function run() {
         Config::load('memcache');
         Config::load('i18n');
@@ -23,8 +38,8 @@ class Application {
 
         $request = new Request();
 
-        $response = $request->execute()->response;
-
+        $response = $this->execute($request);
+        $response->send_headers();
         echo $response;
     }
 
